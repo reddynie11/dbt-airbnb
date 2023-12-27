@@ -1,0 +1,16 @@
+WITH src_listings AS (
+    SELECT * FROM {{ ref("src_listing")}}
+)
+SELECT
+listing_id,
+listing_name,
+room_type,
+CASE
+    WHEN min_nights = 0 THEN 1
+    ELSE min_nights
+END AS min_nights,
+host_id,
+REPLACE(price_str, '$')::NUMBER(10,2) AS price,
+created_at,
+updated_at
+FROM src_listings
