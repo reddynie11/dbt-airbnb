@@ -20,3 +20,6 @@ models:
                     'Private room',
                     'Shared room',
                     'Hotel room']
+     - name: min_nights
+       tests:
+        - positive_int
